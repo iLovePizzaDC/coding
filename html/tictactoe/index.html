@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <h1>TicTacToe</h1>
+
+    <p id="instruction">X starts</p>
+    <p id="restart" onclick="restartGame()">Restart</p>
+
+    <div id="gameField">
+      <div class="row">
+        <div id="d0" class="col-md-4" onclick="drawStep(0)">
+          <p id="p0"></p>
+        </div>
+        <div id="d1" class="col-md-4" onclick="drawStep(1)">
+          <p id="p1"></p>
+        </div>
+        <div id="d2" class="col-md-4" onclick="drawStep(2)">
+          <p id="p2"></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="d3" class="col-md-4" onclick="drawStep(3)">
+          <p id="p3"></p>
+        </div>
+        <div id="d4" class="col-md-4" onclick="drawStep(4)">
+          <p id="p4"></p>
+        </div>
+        <div id="d5" class="col-md-4" onclick="drawStep(5)">
+          <p id="p5"></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="d6" class="col-md-4" onclick="drawStep(6)">
+          <p id="p6"></p>
+        </div>
+        <div id="d7" class="col-md-4" onclick="drawStep(7)">
+          <p id="p7"></p>
+        </div>
+        <div id="d8" class="col-md-4" onclick="drawStep(8)">
+          <p id="p8"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+body {
+    text-align: center;
+    background-color: #525252;
+    color: #ffffff;
+}
+
+h1 {
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    padding-bottom: 3%;
+}
+
+input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+input,
+select,
+textarea {
+    color: #ffffff;
+}
+
+::placeholder {
+    text-align: center;
+    color: #979797;
+}
+
+#c0,
+#c1,
+#c2,
+#c3,
+#c4,
+#c5,
+#c6,
+#c7,
+#c8,
+#c9 {
+    width: 200px;
+    height: 82.5px;
+    line-height: 60px;
+    background-color: #525252;
+    border-top: 12.5px solid #606060;
+    border-bottom: 12.5px solid #606060;
+}
+
+#numChooser {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #606060;
+}
+
+#difficulty {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20%;
+    height: auto;
+    padding: 3%;
+    border: 1px solid black;
+    background-color: #606060;
+}
+
+#status {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    width: 20%;
+    height: auto;
+    padding: 3%;
+    border: 1px solid black;
+    background-color: #606060;
+}
+
+#start {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: auto;
+    padding: 3%;
+    border: 1px solid black;
+    background-color: #606060;
+}
+
+#restart {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: auto;
+    padding: 3%;
+    border: 1px solid black;
+    background-color: #606060;
+}
+
+#gameField {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.outer {
+    width: 200px;
+    height: 200px;
+    border: 3px solid black;
+}
+
+.outer p {
+    font-size: 100px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.inner {
+    width: 65px;
+    height: 65px;
+    border: 1px solid black;
+}
+
+.inner p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.notClickable {
+    pointer-events: none;
+    background-color: #606060;
+}

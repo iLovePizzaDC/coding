@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/puzzleGenerator.js" defer></script>
+    <script src="js/gamefield.js" defer></script>
+    <title>Sudoku</title>
+</head>
+
+<body>
+    <h1>Sudoku</h1>
+    <div id="numChooser">
+        <div id="c1" onclick="changeBackgroundOfNum(1)">
+            <p>1</p>
+        </div>
+        <div id="c2" onclick="changeBackgroundOfNum(2)">
+            <p>2</p>
+        </div>
+        <div id="c3" onclick="changeBackgroundOfNum(3)">
+            <p>3</p>
+        </div>
+        <div id="c4" onclick="changeBackgroundOfNum(4)">
+            <p>4</p>
+        </div>
+        <div id="c5" onclick="changeBackgroundOfNum(5)">
+            <p>5</p>
+        </div>
+        <div id="c6" onclick="changeBackgroundOfNum(6)">
+            <p>6</p>
+        </div>
+        <div id="c7" onclick="changeBackgroundOfNum(7)">
+            <p>7</p>
+        </div>
+        <div id="c8" onclick="changeBackgroundOfNum(8)">
+            <p>8</p>
+        </div>
+        <div id="c9" onclick="changeBackgroundOfNum(9)">
+            <p>9</p>
+        </div>
+    </div>
+    <div id="difficulty"><input type="number" placeholder="difficulty [1-10]" min="1" max="10"></input></div>
+    <div id="start" onclick="initGamefield()"><input type="submit" value="Start" style="cursor: default;"></div>
+    <div id="status"></div>
+    <div id="restart" onclick="restartGame()">Restart</div>
+    <!--
+      QUATER
+      COLUMN
+      ROW
+    -->
+    <div id="gameField">
+        <div class="row">
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(111)">
+                        <p id="111"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(112)">
+                        <p id="112"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(113)">
+                        <p id="113"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(121)">
+                        <p id="121"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(122)">
+                        <p id="122"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(123)">
+                        <p id="123"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(131)">
+                        <p id="131"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(132)">
+                        <p id="132"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(133)">
+                        <p id="133"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(211)">
+                        <p id="211"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(212)">
+                        <p id="212"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(213)">
+                        <p id="213"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(221)">
+                        <p id="221"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(222)">
+                        <p id="222"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(223)">
+                        <p id="223"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(231)">
+                        <p id="231"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(232)">
+                        <p id="232"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(233)">
+                        <p id="233"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(311)">
+                        <p id="311"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(312)">
+                        <p id="312"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(313)">
+                        <p id="313"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(321)">
+                        <p id="321"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(322)">
+                        <p id="322"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(323)">
+                        <p id="323"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(331)">
+                        <p id="331"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(332)">
+                        <p id="332"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(333)">
+                        <p id="333"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(411)">
+                        <p id="411"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(412)">
+                        <p id="412"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(413)">
+                        <p id="413"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(421)">
+                        <p id="421"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(422)">
+                        <p id="422"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(423)">
+                        <p id="423"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(431)">
+                        <p id="431"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(432)">
+                        <p id="432"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(433)">
+                        <p id="433"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(511)">
+                        <p id="511"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(512)">
+                        <p id="512"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(513)">
+                        <p id="513"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(521)">
+                        <p id="521"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(522)">
+                        <p id="522"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(523)">
+                        <p id="523"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(531)">
+                        <p id="531"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(532)">
+                        <p id="532"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(533)">
+                        <p id="533"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(611)">
+                        <p id="611"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(612)">
+                        <p id="612"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(613)">
+                        <p id="613"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(621)">
+                        <p id="621"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(622)">
+                        <p id="622"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(623)">
+                        <p id="623"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(631)">
+                        <p id="631"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(632)">
+                        <p id="632"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(633)">
+                        <p id="633"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(711)">
+                        <p id="711"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(712)">
+                        <p id="712"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(713)">
+                        <p id="713"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(721)">
+                        <p id="721"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(722)">
+                        <p id="722"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(723)">
+                        <p id="723"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(731)">
+                        <p id="731"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(732)">
+                        <p id="732"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(733)">
+                        <p id="733"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(811)">
+                        <p id="811"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(812)">
+                        <p id="812"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(813)">
+                        <p id="813"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(821)">
+                        <p id="821"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(822)">
+                        <p id="822"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(823)">
+                        <p id="823"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(831)">
+                        <p id="831"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(832)">
+                        <p id="832"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(833)">
+                        <p id="833"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(911)">
+                        <p id="911"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(912)">
+                        <p id="912"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(913)">
+                        <p id="913"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(921)">
+                        <p id="921"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(922)">
+                        <p id="922"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(923)">
+                        <p id="923"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 inner" onclick="printNum(931)">
+                        <p id="931"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(932)">
+                        <p id="932"></p>
+                    </div>
+                    <div class="col-md-4 inner" onclick="printNum(933)">
+                        <p id="933"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
