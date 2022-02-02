@@ -1,17 +1,21 @@
-def print_binary(userInput):
-    binary = math_operation(userInput)
-    
-    return binary
+def print_hex(userInput):
+    hex = math_operation(userInput)
+
+    return hex
 
 def math_operation(userInput):
-    binary = ""
+    hex = ""
+    hexPos = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
     dec = int(userInput)
+    loopTimes = 8
 
-    while dec > 0:
-        binary = str(dec % 2) + binary
+    while dec > 0 or loopTimes > 0:
+        mod = (dec % 16) * 16
+        hex = str(mod) + hex
         dec = int(dec / 2)
+        loopTimes -= 1
 
-    return binary
+    return hex
 
 def is_int(n):
     try:
@@ -29,7 +33,7 @@ def main():
         print("Please enter a validate number")
         main()
     else:
-        print('Binary: %s' % print_binary(userInput))
+        print('HEX: %s' % print_hex(userInput))
 
 
 
